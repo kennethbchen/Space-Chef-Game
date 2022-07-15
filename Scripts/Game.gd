@@ -12,19 +12,12 @@ onready var cut_line = $CutLine
 onready var cut_start = Vector2.ZERO
 onready var cut_end = Vector2.ZERO
 
-
-
 var cutting = false
 
 export(PackedScene) var base_object
 
-
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	fracture_util.init(base_object)
-	pass # Replace with function body.
 
 func _process(delta):
 	_draw_cut_line()
@@ -50,8 +43,9 @@ func _draw_cut_line():
 	cut_line.add_point(cut_start)
 	cut_line.add_point(get_global_mouse_position())
 
+
+# References CutFracture.gd from fracturing library
 func _cut(start: Vector2, end: Vector2):
-	
 	var cut_pos = Vector2.ZERO
 	
 	var cut_line = PoolVector2Array([start,end])

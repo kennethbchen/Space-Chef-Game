@@ -30,7 +30,7 @@ extends RigidBody2D
 # SOFTWARE.
 
 
-
+# Was Rigidbody2D.gd from Fracturing Library
 
 export(Vector2) var rand_linear_velocity_range = Vector2(750.0, 1000.0)
 #export(Vector2) var rand_angular_velocity_range = Vector2(-10.0, 10.0)
