@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "PolygonFracture",
+"language": "GDScript",
+"path": "res://Libraries/polygon2d-fracture/PolygonFracture.gd"
+}, {
+"base": "Reference",
+"class": "PolygonLib",
+"language": "GDScript",
+"path": "res://Libraries/polygon2d-fracture/PolygonLib.gd"
+}, {
+"base": "Reference",
+"class": "PolygonRestorer",
+"language": "GDScript",
+"path": "res://Libraries/polygon2d-fracture/PolygonRestorer.gd"
+} ]
+_global_script_class_icons={
+"PolygonFracture": "",
+"PolygonLib": "",
+"PolygonRestorer": ""
+}
+
 [application]
 
 config/name="GMTK Game Jam 2022"
