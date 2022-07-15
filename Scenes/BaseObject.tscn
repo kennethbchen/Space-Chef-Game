@@ -1,13 +1,15 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Sprites/Square.png" type="Texture" id=1]
-[ext_resource path="res://Libraries/polygon2d-fracture/CuttableObject.gd" type="Script" id=2]
+[ext_resource path="res://BaseObject.gd" type="Script" id=2]
 
 [node name="BaseObject" type="RigidBody2D"]
-position = Vector2( 360, 232 )
+input_pickable = true
 script = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture = ExtResource( 1 )
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

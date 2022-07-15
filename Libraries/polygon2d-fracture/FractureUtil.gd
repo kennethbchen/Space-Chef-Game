@@ -85,7 +85,6 @@ func cutSourcePolygons(object_parent: Node, cut_pos : Vector2, cut_shape : PoolV
 
 func _spawnRigidBody2D(object_parent: Node, shape_info : Dictionary, color : Color, lin_vel : Vector2, ang_vel : float, mass : float, cut_pos : Vector2, texture_info : Dictionary):
 	var instance = base_object.instance()
-	print(instance)
 	object_parent.add_child(instance)
 	instance.global_position = shape_info.spawn_pos
 	instance.global_rotation = shape_info.spawn_rot

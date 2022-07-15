@@ -46,6 +46,11 @@ func _draw_cut_line():
 
 # References CutFracture.gd from fracturing library
 func _cut(start: Vector2, end: Vector2):
+	
+	# Enforce Minimum Length
+	if start.distance_to(end) <= 5:
+		return
+	
 	var cut_pos = Vector2.ZERO
 	
 	var cut_line = PoolVector2Array([start,end])
