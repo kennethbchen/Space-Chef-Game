@@ -62,8 +62,7 @@ func cutSourcePolygons(object_parent: Node, cut_pos : Vector2, cut_shape : PoolV
 			s_mass = source.mass
 		
 		
-		var cut_fracture_info : Dictionary = polyFracture.cutFracture(source_polygon, cut_shape, source_trans, cut_trans, .05, .05, 0.01, 1)
-
+		var cut_fracture_info : Dictionary = polyFracture.cutFracture(source_polygon, cut_shape, source_trans, cut_trans, 1, .05, 0.02, 1)
 		if cut_fracture_info.shapes.size() <= 0 and cut_fracture_info.fractures.size() <= 0:
 			continue
 		
