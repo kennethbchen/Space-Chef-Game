@@ -24,7 +24,7 @@ func _physics_process(delta):
 			linear_damp = 10
 			var move_direction = (get_global_mouse_position() - position - local_grab_position).normalized()
 
-			apply_central_impulse(move_direction * 100 * (dist_to_mouse / 75) * (mass) )
+			apply_central_impulse(move_direction * 100 * (dist_to_mouse / 40) * (mass) )
 		else:
 			applied_torque = 0
 			
@@ -45,8 +45,8 @@ func _on_grab_stop():
 
 func _update_line():
 	outline.clear_points()
-	outline.points = _polygon2d.polygon
-	outline.add_point(_polygon2d.polygon[0])
+	outline.points = _col_polygon2d.polygon
+	outline.add_point(_col_polygon2d.polygon[0])
 	
 func setPolygon(poly : PoolVector2Array) -> void:
 	.setPolygon(poly)

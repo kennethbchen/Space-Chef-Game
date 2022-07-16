@@ -45,7 +45,6 @@ export(Texture) var poly_texture
 
 
 onready var _polygon2d := $Polygon2D
-onready var _line2d := $Polygon2D/Line2D
 onready var _col_polygon2d := $CollisionPolygon2D
 onready var _rng := RandomNumberGenerator.new()
 

@@ -70,4 +70,8 @@ func _cut(start: Vector2, end: Vector2):
 	fracture_util.cutSourcePolygons(objects, start, cut_shape, cut_rot, cut_force)
 
 
+func _on_time_up():
+	print("timer")
+	pass
+
 
