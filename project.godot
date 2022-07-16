@@ -59,6 +59,10 @@ config/icon="res://icon.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
+[gui]
+
+theme/custom="res://Theme.tres"
+
 [input]
 
 cut={

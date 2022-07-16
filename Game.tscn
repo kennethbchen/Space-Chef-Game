@@ -1,15 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Pot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/BaseObject.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Wall.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Ingredients/Leek.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Ingredients/Carrot.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Sprites/Spaceship.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Space.png" type="Texture" id=9]
-[ext_resource path="res://Scripts/Environment.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Ingredients/TempIngredient.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Theme.tres" type="Theme" id=11]
+[ext_resource path="res://UI/Font Large.tres" type="DynamicFont" id=12]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
@@ -17,11 +15,8 @@ base_object = ExtResource( 4 )
 
 [node name="Objects" type="Node" parent="."]
 
-[node name="Carrot" parent="Objects" instance=ExtResource( 7 )]
-position = Vector2( 248, 192 )
-
-[node name="Leek" parent="Objects" instance=ExtResource( 6 )]
-position = Vector2( 524, 290 )
+[node name="TempIngredient" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 288, 168 )
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -46,41 +41,22 @@ z_index = 1
 width = 1.0
 default_color = Color( 1, 0, 0, 1 )
 
-[node name="Space" type="Sprite" parent="."]
-position = Vector2( 512, 300 )
-texture = ExtResource( 9 )
-
 [node name="Environment" type="Node2D" parent="."]
 position = Vector2( 512, 288 )
-script = ExtResource( 10 )
-
-[node name="Spaceship" type="StaticBody2D" parent="Environment"]
-scale = Vector2( 1.1, 1.1 )
-
-[node name="Ship" type="Sprite" parent="Environment/Spaceship"]
-texture = ExtResource( 8 )
-
-[node name="Wall Right" type="CollisionPolygon2D" parent="Environment/Spaceship"]
-visible = false
-polygon = PoolVector2Array( 0, -224, 0, -192, 160, -168, 320, -128, 400, -72, 424, 16, 408, 104, 320, 176, 160, 216, 0, 232, 0, 256, 168, 248, 328, 200, 432, 120, 456, 16, 424, -88, 336, -152, 168, -200 )
-
-[node name="Wall Left" type="CollisionPolygon2D" parent="Environment/Spaceship"]
-visible = false
-scale = Vector2( -1, 1 )
-polygon = PoolVector2Array( 0, -224, 0, -192, 160, -168, 320, -128, 400, -72, 424, 16, 408, 104, 320, 176, 160, 216, 0, 232, 0, 256, 168, 248, 328, 200, 432, 120, 456, 16, 424, -88, 336, -152, 168, -200 )
 
 [node name="Pot" parent="Environment" instance=ExtResource( 1 )]
-position = Vector2( -296, 136 )
-scale = Vector2( 1, 1 )
+position = Vector2( -400, 168 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Timer" type="Control" parent="UI"]
+visible = false
 anchor_left = 0.875
 anchor_right = 1.0
 anchor_bottom = 0.107
-margin_left = -6.10352e-05
-margin_bottom = -0.200005
+margin_left = -48.0
+margin_bottom = -0.199997
+theme = ExtResource( 11 )
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="UI/Timer"]
@@ -90,11 +66,14 @@ anchor_bottom = 1.0
 [node name="Label" type="Label" parent="UI/Timer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "000"
-align = 2
+margin_left = 15.0
+theme = ExtResource( 11 )
+custom_fonts/font = ExtResource( 12 )
+text = "00"
 valign = 1
 
 [node name="Timer" type="Timer" parent="UI/Timer"]
 wait_time = 60.0
 one_shot = true
-autostart = true
+
+[connection signal="timeout" from="UI/Timer/Timer" to="." method="_on_time_up"]
