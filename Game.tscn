@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Sprites/Square.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/CollectionPoint.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/BaseObject.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 95, 54.5 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
 base_object = ExtResource( 4 )
+
+[node name="PolyDebug" type="Polygon2D" parent="."]
+z_index = -1
+color = Color( 0.670588, 0.670588, 0.670588, 1 )
 
 [node name="Objects" type="Node" parent="."]
 
@@ -30,5 +39,20 @@ polygon = PoolVector2Array( 49, 82, 45, 578, 950, 568, 973, 29, 13, 84, 26, -22,
 z_index = 1
 width = 1.0
 default_color = Color( 1, 0, 0, 1 )
+
+[node name="Collection Point" type="Area2D" parent="."]
+position = Vector2( 138, 528 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collection Point"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Collection Point"]
+modulate = Color( 0.698039, 1, 0.686275, 1 )
+scale = Vector2( 11.875, 6.75 )
+z_index = -1
+texture = ExtResource( 1 )
+
+[connection signal="body_entered" from="Collection Point" to="Collection Point" method="_on_body_entered"]
 
 [editable path="Objects/Base ObJ"]

@@ -24,14 +24,19 @@ func _process(delta):
 
 func _input(event: InputEvent):
 	
-	if event is InputEventMouseButton:
-		if event.button_index == 1 and event.pressed:
-			cutting = true
-			cut_start = get_global_mouse_position()
-		elif event.button_index == 1:
-			cutting = false
-			cut_end = get_global_mouse_position()
-			_cut(cut_start, cut_end)
+	if event.is_action_pressed("cut"):
+		
+		cutting = true
+		cut_start = get_global_mouse_position()
+		
+	elif event.is_action_released("cut"):
+		
+		cutting = false
+		cut_end = get_global_mouse_position()
+		_cut(cut_start, cut_end)
+	elif event.is_action_released("grab"):
+		
+		get_tree().call_group("grabbable", "_on_grab_stop")
 		
 func _draw_cut_line():
 	
