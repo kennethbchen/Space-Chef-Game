@@ -2,6 +2,10 @@ extends "res://Libraries/polygon2d-fracture/CuttableObject.gd"
 
 class_name BaseObject
 
+enum object_type {CARROT = 0, LEEK = 1, POTATO = 2}
+
+export(object_type) var type
+
 onready var outline = $Outline
 
 var local_grab_position = Vector2.ZERO

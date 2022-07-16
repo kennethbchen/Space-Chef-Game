@@ -1,4 +1,7 @@
-class_name PolyUtil
+class_name Util
+
+
+
 
 static func get_bounding_box(polygon : PoolVector2Array):
 	

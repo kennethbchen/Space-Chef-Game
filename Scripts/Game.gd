@@ -31,9 +31,18 @@ func _input(event: InputEvent):
 		
 	elif event.is_action_released("cut"):
 		
+		if not cutting:
+			return
+		
 		cutting = false
 		cut_end = get_global_mouse_position()
 		_cut(cut_start, cut_end)
+		
+	elif event.is_action_pressed("grab"):
+		
+		if cutting:
+			cutting = false
+			
 	elif event.is_action_released("grab"):
 		
 		get_tree().call_group("grabbable", "_on_grab_stop")

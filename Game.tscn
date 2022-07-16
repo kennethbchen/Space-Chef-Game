@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Pot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/BaseObject.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Wall.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Ingredients/TempIngredient.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Ingredients/Carrot.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Ingredients/Leek.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Ingredients/Potato.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Theme.tres" type="Theme" id=11]
 [ext_resource path="res://UI/Font Large.tres" type="DynamicFont" id=12]
 
@@ -15,8 +17,15 @@ base_object = ExtResource( 4 )
 
 [node name="Objects" type="Node" parent="."]
 
-[node name="TempIngredient" parent="Objects" instance=ExtResource( 6 )]
-position = Vector2( 288, 168 )
+[node name="Carrot" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 480, 256 )
+
+[node name="Leek" parent="Objects" instance=ExtResource( 7 )]
+position = Vector2( 800, 408 )
+rotation = -1.2683
+
+[node name="Potato" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( 208, 184 )
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -77,3 +86,5 @@ wait_time = 60.0
 one_shot = true
 
 [connection signal="timeout" from="UI/Timer/Timer" to="." method="_on_time_up"]
+
+[editable path="Environment/Pot"]

@@ -20,11 +20,6 @@ _global_script_classes=[ {
 "path": "res://Libraries/polygon2d-fracture/FractureUtil.gd"
 }, {
 "base": "Reference",
-"class": "PolyUtil",
-"language": "GDScript",
-"path": "res://Scripts/PolyUtil.gd"
-}, {
-"base": "Reference",
 "class": "PolygonFracture",
 "language": "GDScript",
 "path": "res://Libraries/polygon2d-fracture/PolygonFracture.gd"
@@ -38,14 +33,19 @@ _global_script_classes=[ {
 "class": "PolygonRestorer",
 "language": "GDScript",
 "path": "res://Libraries/polygon2d-fracture/PolygonRestorer.gd"
+}, {
+"base": "Reference",
+"class": "Util",
+"language": "GDScript",
+"path": "res://Scripts/Util.gd"
 } ]
 _global_script_class_icons={
 "BaseObject": "",
 "FractureUtil": "",
-"PolyUtil": "",
 "PolygonFracture": "",
 "PolygonLib": "",
-"PolygonRestorer": ""
+"PolygonRestorer": "",
+"Util": ""
 }
 
 [application]
