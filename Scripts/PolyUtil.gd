@@ -22,7 +22,8 @@ static func get_bounding_box(polygon : PoolVector2Array):
 
 static func get_poly_stats(polygon: PoolVector2Array):
 	var side_count = polygon.size()
-	var bb_area = PolygonLib.getPolygonArea(get_bounding_box(polygon))
+	
+	var area = PolygonLib.getPolygonArea(polygon)
 	
 	var angles = []
 	
@@ -59,7 +60,7 @@ static func get_poly_stats(polygon: PoolVector2Array):
 	
 	var length_deviation = standard_deviation(side_lengths)
 	
-	return {"sides": side_count, "bb_area": bb_area, "length_deviation": length_deviation, "avg_angle": avg_angle}
+	return {"sides": side_count, "area": area, "length_deviation": length_deviation, "avg_angle": avg_angle}
 
 static func standard_deviation(list: Array):
 	var avg = 0.0
