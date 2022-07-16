@@ -16,9 +16,21 @@ func _ready():
 
 func _physics_process(delta):
 	if held:
-		var movement = (get_global_mouse_position() - position - local_grab_position).normalized() * 800
-		linear_velocity += movement * delta
 		
+		var dist_to_mouse = (position + local_grab_position).distance_to(get_global_mouse_position())
+		
+		if dist_to_mouse > 5:
+			
+			linear_damp = 10
+			var move_direction = (get_global_mouse_position() - position - local_grab_position).normalized()
+
+			apply_central_impulse(move_direction * 100 * (dist_to_mouse / 75) )
+		else:
+			applied_torque = 0
+			
+		
+	else:
+		linear_damp = 0
 		#var rotation_error = (position.angle_to_point(get_global_mouse_position())) - position.angle_to_point(position + local_grab_position)
 		
 func _on_input_event(viewport, event, shape_idx):

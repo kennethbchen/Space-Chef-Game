@@ -21,6 +21,7 @@ color = Color( 0.670588, 0.670588, 0.670588, 1 )
 
 [node name="Base ObJ" parent="Objects" instance=ExtResource( 4 )]
 position = Vector2( 416, 206 )
+continuous_cd = 1
 
 [node name="CollisionPolygon2D" parent="Objects/Base ObJ" index="0"]
 polygon = PoolVector2Array( -74, -64, -102, 96, 69, 110, 99, -59 )
