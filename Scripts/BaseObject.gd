@@ -24,7 +24,7 @@ func _physics_process(delta):
 			linear_damp = 10
 			var move_direction = (get_global_mouse_position() - position - local_grab_position).normalized()
 
-			apply_central_impulse(move_direction * 100 * (dist_to_mouse / 75) )
+			apply_central_impulse(move_direction * 100 * (dist_to_mouse / 75) * (mass) )
 		else:
 			applied_torque = 0
 			
