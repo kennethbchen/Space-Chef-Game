@@ -2,14 +2,18 @@ extends "res://Libraries/polygon2d-fracture/CuttableObject.gd"
 
 class_name BaseObject
 
+onready var outline = $Outline
+
 var local_grab_position = Vector2.ZERO
 
 var held = false
 
 func _ready():
-
-	pass 
 	
+	if _polygon2d.polygon.size() > 0:
+		_update_line()
+		
+
 func _physics_process(delta):
 	if held:
 		var movement = (get_global_mouse_position() - position - local_grab_position).normalized() * 800
@@ -26,3 +30,12 @@ func _on_input_event(viewport, event, shape_idx):
 
 func _on_grab_stop():
 	held = false
+
+func _update_line():
+	outline.clear_points()
+	outline.points = _polygon2d.polygon
+	outline.add_point(_polygon2d.polygon[0])
+	
+func setPolygon(poly : PoolVector2Array) -> void:
+	.setPolygon(poly)
+	_update_line()
