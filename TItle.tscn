@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/Font Large.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/TItle.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/Space.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Logo Transparent.png" type="Texture" id=5]
 
 [node name="Title" type="Control"]
 anchor_right = 1.0
@@ -15,7 +16,13 @@ script = ExtResource( 3 )
 position = Vector2( 512, 300 )
 texture = ExtResource( 4 )
 
+[node name="LogoTransparent" type="Sprite" parent="."]
+position = Vector2( 518, 141 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
 [node name="Label" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -408.0
