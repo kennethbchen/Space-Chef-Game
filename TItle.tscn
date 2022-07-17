@@ -55,15 +55,17 @@ theme = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
+margin_top = 8.0
 theme = ExtResource( 1 )
 text = "Controls:
-Left Click and drag to draw a line
-Release left click to cut things along that line
 
-Right Click and drag to move pieces of ingredients
+Release Left Click - Cut along the line
+
+Right Click + Drag - Move Ingredients
+
+R - Restart 
 
 Cut ingredients and drag the correct amount into the pot specified by the recipe
-
 "
 
 [node name="Control3" type="Control" parent="."]

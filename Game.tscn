@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/Pot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=2]
@@ -22,6 +22,9 @@
 [ext_resource path="res://SFX/Cut/cut-1.wav" type="AudioStream" id=20]
 [ext_resource path="res://SFX/applause.wav" type="AudioStream" id=21]
 [ext_resource path="res://SFX/321go.wav" type="AudioStream" id=22]
+[ext_resource path="res://SFX/Water/bubbles-single2.wav" type="AudioStream" id=23]
+[ext_resource path="res://SFX/Water/bubbles-single3.wav" type="AudioStream" id=24]
+[ext_resource path="res://SFX/Water/bubbles-single1.wav" type="AudioStream" id=25]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -136,7 +139,10 @@ theme = ExtResource( 11 )
 [node name="HBoxContainer" type="VBoxContainer" parent="UI/Recipe"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
+margin_left = 16.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
 theme = ExtResource( 11 )
 
 [node name="ResultsScreen" type="PopupPanel" parent="UI"]
@@ -155,10 +161,10 @@ script = ExtResource( 13 )
 [node name="MainContainer" type="VBoxContainer" parent="UI/ResultsScreen"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 17.064
+margin_top = 17.5811
+margin_right = -26.8887
+margin_bottom = -12.9273
 theme = ExtResource( 11 )
 
 [node name="MessageContainer" type="VBoxContainer" parent="UI/ResultsScreen/MainContainer"]
@@ -259,6 +265,7 @@ margin_left = -56.0
 margin_top = -52.0
 margin_right = 56.0
 margin_bottom = 52.0
+theme = ExtResource( 11 )
 popup_exclusive = true
 script = ExtResource( 15 )
 
@@ -267,24 +274,15 @@ wait_time = 4.0
 one_shot = true
 autostart = true
 
-[node name="Panel" type="Panel" parent="UI/CountdownTimer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
-theme = ExtResource( 11 )
-
 [node name="Label" type="Label" parent="UI/CountdownTimer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -52.0
-margin_top = -48.0
-margin_right = 52.0
-margin_bottom = 48.0
+margin_left = -48.0
+margin_top = -52.0
+margin_right = 56.0
+margin_bottom = 52.0
 mouse_filter = 0
 theme = ExtResource( 11 )
 custom_fonts/font = ExtResource( 12 )
@@ -295,6 +293,7 @@ valign = 1
 [node name="SoundEffectController" type="Node" parent="."]
 script = ExtResource( 16 )
 cutting_sounds = [ ExtResource( 20 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ]
+bubble_sounds = [ ExtResource( 25 ), ExtResource( 23 ), ExtResource( 24 ) ]
 applause_sound = ExtResource( 21 )
 countdown_sound = ExtResource( 22 )
 num_channels = 3

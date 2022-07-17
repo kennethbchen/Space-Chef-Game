@@ -1,9 +1,13 @@
-[gd_resource type="Theme" load_steps=3 format=2]
+[gd_resource type="Theme" load_steps=5 format=2]
 
 [ext_resource path="res://UI/Font Normal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Font Large.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/Styleboxes/Panel.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/Styleboxes/Popup Panel.tres" type="StyleBox" id=4]
 
 [resource]
 default_font = ExtResource( 1 )
 Fonts/fonts/large = ExtResource( 2 )
 Fonts/fonts/normal = ExtResource( 1 )
+Panel/styles/panel = ExtResource( 3 )
+PopupPanel/styles/panel = ExtResource( 4 )

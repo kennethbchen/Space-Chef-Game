@@ -7,6 +7,7 @@ played concurrently
 """
 
 export(Array, Resource) var cutting_sounds = []
+export(Array, Resource) var bubble_sounds = []
 export(Resource) var applause_sound
 export(Resource) var countdown_sound
 
@@ -94,3 +95,6 @@ func play_applause_sound():
 	
 func play_countdown_sound():
 	play_sound(countdown_sound)
+	
+func play_bubble_sound():
+	play_rand(bubble_sounds)

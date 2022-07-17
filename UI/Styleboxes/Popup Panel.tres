@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=2]
+
+[ext_resource path="res://UI/Assets/glassPanel_cornerTL.png" type="Texture" id=1]
+
+[resource]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 100, 100 )
+margin_left = 17.064
+margin_right = 26.8887
+margin_top = 17.5811
+margin_bottom = 12.9273

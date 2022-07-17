@@ -97,6 +97,8 @@ func _input(event: InputEvent):
 		get_tree().call_group("grabbable", "_on_grab_stop")
 	elif event.is_action_pressed("win"):
 		_finish_game()
+	elif event.is_action_pressed("restart"):
+		_on_game_restart()
 
 		
 func _draw_cut_line():
@@ -237,7 +239,9 @@ func _on_game_restart():
 	get_tree().change_scene("res://Game.tscn")
 
 func _on_item_inserted(stats):
-
+	
+	sfx.play_bubble_sound()
+	
 	if input_disabled:
 		return
 		
