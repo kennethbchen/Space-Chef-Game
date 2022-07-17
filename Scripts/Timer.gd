@@ -5,7 +5,9 @@ onready var label = $Label
 
 onready var timer = $Timer
 
+var elapsed_time = 0
 
+var running = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,12 +16,16 @@ func _ready():
 
 func _process(delta):
 
+	if running:
+		elapsed_time += delta
 	
-	if timer.time_left > 1:
-		label.align = HALIGN_CENTER
-		label.text = ("%d" % timer.time_left)
-	else:
-		label.align = HALIGN_LEFT
-		label.text = ("%0.2f" % timer.time_left)
+	label.text = "%0.2f" % elapsed_time
+	
 
+
+func stop_timer():
+	running = false
 	
+func start_timer():
+	running = true
+
