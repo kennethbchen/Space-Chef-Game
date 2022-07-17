@@ -46,17 +46,20 @@ sfx_path = NodePath("SoundEffectController")
 [node name="Carrot" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 480, 256 )
 continuous_cd = 1
+linear_velocity = Vector2( 0, 1 )
 angular_velocity = 1.0
 
 [node name="Leek" parent="Objects" instance=ExtResource( 7 )]
 position = Vector2( 824, 240 )
 rotation = -1.2683
 continuous_cd = 1
+linear_velocity = Vector2( -1, 0 )
 angular_velocity = -1.0
 
 [node name="Potato" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 208, 184 )
 continuous_cd = 1
+linear_velocity = Vector2( 1, 1 )
 angular_velocity = 1.0
 
 [node name="Walls" type="Node2D" parent="."]
@@ -97,7 +100,7 @@ width = 1.0
 default_color = Color( 1, 0, 0, 1 )
 
 [node name="Pot" parent="." instance=ExtResource( 1 )]
-position = Vector2( 104, 472 )
+position = Vector2( 115, 472 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -301,11 +304,11 @@ countdown_sound = ExtResource( 22 )
 num_channels = 3
 
 [node name="Space" type="Sprite" parent="."]
-position = Vector2( 512, 296 )
+position = Vector2( 512, 300 )
 texture = ExtResource( 27 )
 
 [node name="Spaceship" type="Sprite" parent="."]
-position = Vector2( 512, 320 )
+position = Vector2( 512, 300 )
 texture = ExtResource( 26 )
 
 [connection signal="item_inserted" from="Pot" to="." method="_on_item_inserted"]
