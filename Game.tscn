@@ -67,9 +67,6 @@ scale = Vector2( 20, 10 )
 [node name="Sprite" parent="Walls/Node2D6" index="0"]
 visible = false
 
-[node name="CollisionShape2D" parent="Walls/Node2D6" index="1"]
-scale = Vector2( 1, 1 )
-
 [node name="Node2D3" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -8, 312 )
 scale = Vector2( 1, 50 )
@@ -247,9 +244,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -64.0
+margin_left = -56.0
 margin_top = -52.0
-margin_right = 64.0
+margin_right = 56.0
 margin_bottom = 52.0
 popup_exclusive = true
 script = ExtResource( 15 )
@@ -273,14 +270,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -68.0
+margin_left = -52.0
 margin_top = -48.0
-margin_right = 68.0
+margin_right = 52.0
 margin_bottom = 48.0
 mouse_filter = 0
 theme = ExtResource( 11 )
 custom_fonts/font = ExtResource( 12 )
-text = "0.00"
+text = "3"
 align = 1
 valign = 1
 

@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Font Large.tres" type="DynamicFont" id=2]
+[ext_resource path="res://TItle.gd" type="Script" id=3]
+
+[node name="Title" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -408.0
+margin_right = 408.0
+margin_bottom = 162.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "SPACE CHEF"
+align = 1
+valign = 1
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -384.0
+margin_top = -280.0
+theme = ExtResource( 1 )
+
+[node name="Label" type="RichTextLabel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -8.0
+theme = ExtResource( 1 )
+text = "You are a chef in space that must dice ingredients in order to make a recipe.
+
+You are graded on speed and accuracy:
+- How fast you complete the recipe
+- How square your cuts are (angle and side length)
+
+The sizes of the squares don't matter as long as they are square-like"
+
+[node name="Control2" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -280.0
+margin_right = 384.0
+theme = ExtResource( 1 )
+
+[node name="Label" type="RichTextLabel" parent="Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+theme = ExtResource( 1 )
+text = "Controls:
+Left Click and drag to draw a line
+Release left click to cut things along that line
+
+Right Click and drag to move pieces of ingredients
+
+Cut ingredients and drag the correct amount into the pot specified by the recipe
+
+"
+
+[node name="Control3" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -36.0
+margin_right = 88.0
+margin_bottom = 36.0
+
+[node name="PlayButton" type="Button" parent="Control3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "PLAY"
+
+[connection signal="button_down" from="Control3/PlayButton" to="." method="_on_game_start"]
