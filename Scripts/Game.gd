@@ -171,8 +171,9 @@ func _finish_game(game_won):
 	
 	
 	var cut_stats = _calculate_cut_stats(items_inserted)
-	var cut_stats_message = "Avg Cut Angle: %0.2f°\n Avg Length Deviation: %0.2f" % [cut_stats["avg_square_angle"], cut_stats["avg_length_deviation"]]
-	print(cut_stats_message)
+	var cut_stats_message = \
+	"Avg Cut Angle: %0.2f°\n Avg Length Deviation: %0.2f\n Avg Shape Sides: %0.2f" % \
+	[cut_stats["avg_square_angle"], cut_stats["avg_length_deviation"], cut_stats["avg_shape_sides"]]
 	
 	game_data["time"] = "Time: %0.2f Seconds" % timer.elapsed_time
 	game_data["ingredient_stats"] = ingredient_stats_string
@@ -189,6 +190,8 @@ func _calculate_cut_stats(items_inserted):
 	
 	var avg_length_deviation = 0
 	
+	var avg_shape_sides = 0
+	
 	var item_count = 0
 	
 	for i in items_inserted.keys():
@@ -198,6 +201,8 @@ func _calculate_cut_stats(items_inserted):
 			
 			avg_length_deviation += item["length_deviation"]
 			
+			avg_shape_sides += item["sides"]
+			
 			item_count += 1
 			
 	
@@ -206,9 +211,11 @@ func _calculate_cut_stats(items_inserted):
 	if item_count != 0:
 		avg_square_angle /= item_count
 		avg_length_deviation /= item_count
+		avg_shape_sides /= item_count
 	
 	cut_stats["avg_square_angle"] = avg_square_angle
 	cut_stats["avg_length_deviation"] = avg_length_deviation
+	cut_stats["avg_shape_sides"] = avg_shape_sides
 	
 	return cut_stats
 	

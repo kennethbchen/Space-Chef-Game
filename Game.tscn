@@ -152,6 +152,7 @@ size_flags_stretch_ratio = 8.0
 [node name="Message" type="Label" parent="UI/ResultsScreen/MainContainer/MessageContainer"]
 margin_right = 568.0
 margin_bottom = 111.0
+mouse_filter = 0
 size_flags_vertical = 3
 theme = ExtResource( 11 )
 custom_fonts/font = ExtResource( 12 )
@@ -173,6 +174,7 @@ theme = ExtResource( 11 )
 [node name="IngredientLabel" type="Label" parent="UI/ResultsScreen/MainContainer/MessageContainer/StatsContainer"]
 margin_right = 568.0
 margin_bottom = 114.0
+mouse_filter = 0
 size_flags_vertical = 6
 theme = ExtResource( 11 )
 custom_fonts/font = ExtResource( 9 )
@@ -197,6 +199,10 @@ valign = 1
 margin_top = 158.0
 margin_right = 568.0
 margin_bottom = 283.0
+hint_tooltip = "Average Cut Angle - The closer to 90 degrees, the better.
+Average Length Deviation - The closer to 0 pixel units, the better.
+Average Shape Sides - The Closer to 4, the better."
+mouse_filter = 0
 size_flags_vertical = 6
 theme = ExtResource( 11 )
 custom_fonts/font = SubResource( 1 )
