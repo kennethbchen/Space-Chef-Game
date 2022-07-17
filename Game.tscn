@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Pot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=2]
@@ -8,12 +8,15 @@
 [ext_resource path="res://Scenes/Ingredients/Carrot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Ingredients/Leek.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Ingredients/Potato.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/IngredientLabel.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Theme.tres" type="Theme" id=11]
 [ext_resource path="res://UI/Font Large.tres" type="DynamicFont" id=12]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
 base_object = ExtResource( 4 )
+ingredient_label = ExtResource( 10 )
+ingredient_label_parent_path = NodePath("UI/Recipe/HBoxContainer")
 
 [node name="Objects" type="Node" parent="."]
 
@@ -22,7 +25,7 @@ position = Vector2( 480, 256 )
 continuous_cd = 1
 
 [node name="Leek" parent="Objects" instance=ExtResource( 7 )]
-position = Vector2( 800, 408 )
+position = Vector2( 824, 240 )
 rotation = -1.2683
 continuous_cd = 1
 
@@ -33,19 +36,23 @@ continuous_cd = 1
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="Node2D" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 522, 8 )
+position = Vector2( 520, -8 )
 scale = Vector2( 70, 1 )
 
 [node name="Node2D2" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 508, 590 )
+position = Vector2( 512, 608 )
 scale = Vector2( 70, 1 )
 
+[node name="Node2D5" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 872, 552 )
+scale = Vector2( 20, 10 )
+
 [node name="Node2D3" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 8, 306 )
+position = Vector2( -8, 312 )
 scale = Vector2( 1, 50 )
 
 [node name="Node2D4" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1016, 312 )
+position = Vector2( 1032, 312 )
 scale = Vector2( 1, 50 )
 
 [node name="CutLine" type="Line2D" parent="."]
@@ -54,12 +61,11 @@ width = 1.0
 default_color = Color( 1, 0, 0, 1 )
 
 [node name="Pot" parent="." instance=ExtResource( 1 )]
-position = Vector2( 112, 456 )
+position = Vector2( 104, 472 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Timer" type="Control" parent="UI"]
-visible = false
 anchor_left = 0.875
 anchor_right = 1.0
 anchor_bottom = 0.107
@@ -84,6 +90,23 @@ valign = 1
 [node name="Timer" type="Timer" parent="UI/Timer"]
 wait_time = 60.0
 one_shot = true
+
+[node name="Recipe" type="Control" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -312.0
+margin_top = -128.0
+
+[node name="Panel" type="Panel" parent="UI/Recipe"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/Recipe"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
 
 [connection signal="item_inserted" from="Pot" to="." method="_on_item_inserted"]
 [connection signal="timeout" from="UI/Timer/Timer" to="." method="_on_time_up"]

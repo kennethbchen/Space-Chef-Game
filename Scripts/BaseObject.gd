@@ -14,6 +14,9 @@ var local_grab_position = Vector2.ZERO
 
 var held = false
 
+func init(source_object):
+	type = source_object.type
+	
 func _ready():
 	
 	if _polygon2d.polygon.size() > 0:

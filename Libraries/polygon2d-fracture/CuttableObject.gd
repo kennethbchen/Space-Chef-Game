@@ -48,7 +48,8 @@ onready var _polygon2d := $Polygon2D
 onready var _col_polygon2d := $CollisionPolygon2D
 onready var _rng := RandomNumberGenerator.new()
 
-
+func init(source_object):
+	pass
 
 func _ready() -> void:
 	_rng.randomize()

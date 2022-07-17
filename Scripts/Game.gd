@@ -2,6 +2,11 @@ extends Node2D
 
 export(PackedScene) var base_object
 
+export(PackedScene) var ingredient_label
+
+export(NodePath) var ingredient_label_parent_path
+onready var ingredient_label_parent = get_node(ingredient_label_parent_path)
+
 onready var object = $Object
 
 onready var fracture_util = FractureUtil.new()
@@ -14,6 +19,8 @@ onready var cut_start = Vector2.ZERO
 onready var cut_end = Vector2.ZERO
 
 var cutting = false
+
+signal item_inserted(item_type)
 
 var recipe = {
 	BaseObject.object_type.CARROT: {
@@ -31,6 +38,8 @@ var items_inserted = {}
 
 func _ready():
 	fracture_util.init(base_object)
+	
+	_init_ingredient_labels()
 
 func _process(delta):
 	_draw_cut_line()
@@ -103,5 +112,23 @@ func _on_item_inserted(stats):
 
 	items_inserted[stats.type]["count"] += 1
 	#items_inserted[stats.type]["items"].append(stats)
+	
+	print(stats.type)
+	emit_signal("item_inserted", stats.type, items_inserted[stats.type]["count"], recipe[stats.type]["amount"])
 
+func _init_ingredient_labels():
+	
+	for i in recipe.keys():
+		var label = ingredient_label.instance()
+		label.init(i, BaseObject.object_names[i])
+		
+		ingredient_label_parent.add_child(label)
+		
+		self.connect("item_inserted", label, "_on_item_inserted")
 
+		emit_signal("item_inserted", i, 0, recipe[i]["amount"])
+		
+	
+	
+	
+	

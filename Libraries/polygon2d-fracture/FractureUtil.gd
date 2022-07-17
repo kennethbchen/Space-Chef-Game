@@ -79,12 +79,14 @@ func cutSourcePolygons(object_parent: Node, cut_pos : Vector2, cut_shape : PoolV
 			var mass : float = s_mass * area_p
 			var dir : Vector2 = (shape.spawn_pos - cut_pos).normalized()
 			
-			_spawnRigidBody2D( object_parent, shape, source.modulate, s_lin_vel + dir * cut_force, s_ang_vel, mass, cut_pos, source.getTextureInfo())
+			_spawnRigidBody2D( object_parent, shape, source.modulate, s_lin_vel + dir * cut_force, s_ang_vel, mass, cut_pos, source.getTextureInfo(), source)
 		
 		source.queue_free()
 
-func _spawnRigidBody2D(object_parent: Node, shape_info : Dictionary, color : Color, lin_vel : Vector2, ang_vel : float, mass : float, cut_pos : Vector2, texture_info : Dictionary):
+func _spawnRigidBody2D(object_parent: Node, shape_info : Dictionary, color : Color, lin_vel : Vector2, ang_vel : float, mass : float, cut_pos : Vector2, texture_info : Dictionary, source_object):
 	var instance = base_object.instance()
+	instance.init(source_object)
+	
 	object_parent.add_child(instance)
 	instance.global_position = shape_info.spawn_pos
 	instance.global_rotation = shape_info.spawn_rot
@@ -94,4 +96,5 @@ func _spawnRigidBody2D(object_parent: Node, shape_info : Dictionary, color : Col
 	instance.angular_velocity = ang_vel
 	instance.mass = mass
 	instance.setTexture(PolygonLib.setTextureOffset(texture_info, shape_info.centroid))
-	pass
+	
+	
