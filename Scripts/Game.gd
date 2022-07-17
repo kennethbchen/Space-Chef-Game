@@ -186,11 +186,11 @@ func _calculate_cut_stats(items_inserted):
 	var cut_stats = {}
 	
 
-	var avg_square_angle = 0
+	var avg_square_angle = 0.0
 	
-	var avg_length_deviation = 0
+	var avg_length_deviation = 0.0
 	
-	var avg_shape_sides = 0
+	var avg_shape_sides = 0.0
 	
 	var item_count = 0
 	
@@ -231,6 +231,9 @@ func _on_time_up():
 
 func _on_item_inserted(stats):
 
+	if input_disabled:
+		return
+		
 	items_inserted[stats.type]["count"] += 1
 	items_inserted[stats.type]["items"].append(stats)
 	

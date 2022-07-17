@@ -59,6 +59,16 @@ scale = Vector2( 20, 10 )
 [node name="Sprite" parent="Walls/Node2D5" index="0"]
 visible = false
 
+[node name="Node2D6" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 992, -15.9999 )
+scale = Vector2( 20, 10 )
+
+[node name="Sprite" parent="Walls/Node2D6" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="Walls/Node2D6" index="1"]
+scale = Vector2( 1, 1 )
+
 [node name="Node2D3" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -8, 312 )
 scale = Vector2( 1, 50 )
@@ -235,4 +245,5 @@ text = "Play Again"
 [connection signal="button_up" from="UI/ResultsScreen/MainContainer/RestartButton" to="." method="_on_game_restart"]
 
 [editable path="Walls/Node2D5"]
+[editable path="Walls/Node2D6"]
 [editable path="Pot"]
