@@ -114,6 +114,24 @@ func _on_item_inserted(stats):
 	#items_inserted[stats.type]["items"].append(stats)
 	
 	emit_signal("item_inserted", stats.type, items_inserted[stats.type]["count"], recipe[stats.type]["amount"])
+	
+	print(_is_recipe_complete())
+
+func _is_recipe_complete():
+	
+	var complete = true
+	
+	for i in recipe.keys():
+		
+		if !items_inserted.has(i):
+			complete = false
+			break
+		
+		if items_inserted[i]["count"] < recipe[i]["amount"]:
+			complete = false
+			break
+			
+	return complete
 
 func _init_ingredient_labels():
 	
