@@ -11,3 +11,5 @@ theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Stuff: 6/9"
 script = ExtResource( 3 )
+good_color = Color( 0.14902, 1, 0, 1 )
+bad_color = Color( 1, 0, 0, 1 )

@@ -113,7 +113,6 @@ func _on_item_inserted(stats):
 	items_inserted[stats.type]["count"] += 1
 	#items_inserted[stats.type]["items"].append(stats)
 	
-	print(stats.type)
 	emit_signal("item_inserted", stats.type, items_inserted[stats.type]["count"], recipe[stats.type]["amount"])
 
 func _init_ingredient_labels():
