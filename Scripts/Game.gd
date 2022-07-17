@@ -7,6 +7,9 @@ export(PackedScene) var ingredient_label
 export(NodePath) var ingredient_label_parent_path
 onready var ingredient_label_parent = get_node(ingredient_label_parent_path)
 
+export(NodePath) var results_screen_path
+onready var results_screen: PopupPanel = get_node(results_screen_path)
+
 onready var object = $Object
 
 onready var fracture_util = FractureUtil.new()
@@ -68,6 +71,8 @@ func _input(event: InputEvent):
 	elif event.is_action_released("grab"):
 		
 		get_tree().call_group("grabbable", "_on_grab_stop")
+	elif event.is_action_pressed("win"):
+		_finish_game(true)
 		
 func _draw_cut_line():
 	
@@ -115,7 +120,8 @@ func _on_item_inserted(stats):
 	
 	emit_signal("item_inserted", stats.type, items_inserted[stats.type]["count"], recipe[stats.type]["amount"])
 	
-	print(_is_recipe_complete())
+	if _is_recipe_complete():
+		_finish_game(true)
 
 func _is_recipe_complete():
 	
@@ -144,8 +150,14 @@ func _init_ingredient_labels():
 		self.connect("item_inserted", label, "_on_item_inserted")
 
 		emit_signal("item_inserted", i, 0, recipe[i]["amount"])
-		
+
+func _finish_game(recipe_complete = false):
 	
+	results_screen.popup()
+	pass
+
+func _on_game_restart():
+	get_tree().change_scene("res://Game.tscn")
 	
 	
 	
