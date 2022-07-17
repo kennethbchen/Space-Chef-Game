@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/Pot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://SFX/Water/bubbles-single2.wav" type="AudioStream" id=23]
 [ext_resource path="res://SFX/Water/bubbles-single3.wav" type="AudioStream" id=24]
 [ext_resource path="res://SFX/Water/bubbles-single1.wav" type="AudioStream" id=25]
+[ext_resource path="res://Sprites/Spaceship.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Space.png" type="Texture" id=27]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -279,10 +281,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -52.0
-margin_right = 56.0
-margin_bottom = 52.0
+margin_left = -38.936
+margin_top = -34.4189
+margin_right = 29.1113
+margin_bottom = 39.0727
 mouse_filter = 0
 theme = ExtResource( 11 )
 custom_fonts/font = ExtResource( 12 )
@@ -297,6 +299,14 @@ bubble_sounds = [ ExtResource( 25 ), ExtResource( 23 ), ExtResource( 24 ) ]
 applause_sound = ExtResource( 21 )
 countdown_sound = ExtResource( 22 )
 num_channels = 3
+
+[node name="Space" type="Sprite" parent="."]
+position = Vector2( 512, 296 )
+texture = ExtResource( 27 )
+
+[node name="Spaceship" type="Sprite" parent="."]
+position = Vector2( 512, 320 )
+texture = ExtResource( 26 )
 
 [connection signal="item_inserted" from="Pot" to="." method="_on_item_inserted"]
 [connection signal="button_up" from="UI/ResultsScreen/MainContainer/RestartButton" to="." method="_on_game_restart"]
