@@ -29,6 +29,7 @@ onready var cut_end = Vector2.ZERO
 
 
 var cutting = false
+var grabbing = false
 
 signal item_inserted(item_type)
 
@@ -73,11 +74,17 @@ func _input(event: InputEvent):
 	
 	if event.is_action_pressed("cut"):
 		
+		if grabbing:
+			return
+			
 		cutting = true
 		cut_start = get_global_mouse_position()
 		
 	elif event.is_action_released("cut"):
 		
+		if grabbing:
+			return
+			
 		if not cutting:
 			return
 		
@@ -89,14 +96,18 @@ func _input(event: InputEvent):
 		
 	elif event.is_action_pressed("grab"):
 		
+		grabbing = true
+		
 		if cutting:
 			cutting = false
 			
 	elif event.is_action_released("grab"):
 		
+		grabbing = false
+		
 		get_tree().call_group("grabbable", "_on_grab_stop")
-	elif event.is_action_pressed("win"):
-		_finish_game()
+#	elif event.is_action_pressed("win"):
+#		_finish_game()
 	elif event.is_action_pressed("restart"):
 		_on_game_restart()
 
