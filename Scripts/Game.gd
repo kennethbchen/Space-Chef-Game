@@ -39,6 +39,8 @@ var recipe = {
 
 var items_inserted = {}
 
+var input_disabled = false
+
 func _ready():
 	fracture_util.init(base_object)
 	
@@ -48,6 +50,9 @@ func _process(delta):
 	_draw_cut_line()
 
 func _input(event: InputEvent):
+	
+	if input_disabled:
+		return
 	
 	if event.is_action_pressed("cut"):
 		
@@ -153,6 +158,7 @@ func _init_ingredient_labels():
 
 func _finish_game(recipe_complete = false):
 	
+	input_disabled = true
 	results_screen.popup()
 	pass
 
