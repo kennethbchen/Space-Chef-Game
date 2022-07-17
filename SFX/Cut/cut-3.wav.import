@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cut-3.wav-be69b075f9fc43eeb1ab017d9ae7bd3d.sample"
+
+[deps]
+
+source_file="res://SFX/Cut/cut-3.wav"
+dest_files=[ "res://.import/cut-3.wav-be69b075f9fc43eeb1ab017d9ae7bd3d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

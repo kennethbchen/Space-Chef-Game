@@ -13,6 +13,9 @@ onready var results_screen: PopupPanel = get_node(results_screen_path)
 export(NodePath) var timer_path
 onready var timer = get_node(timer_path)
 
+export(NodePath) var sfx_path
+onready var sfx = get_node(sfx_path)
+
 onready var object = $Object
 
 onready var fracture_util = FractureUtil.new()
@@ -28,6 +31,9 @@ onready var cut_end = Vector2.ZERO
 var cutting = false
 
 signal item_inserted(item_type)
+
+
+
 
 var recipe = {
 	BaseObject.object_type.CARROT: {
@@ -78,6 +84,8 @@ func _input(event: InputEvent):
 		cut_end = get_global_mouse_position()
 		_cut(cut_start, cut_end)
 		
+		sfx.play_cut_sound()
+		
 	elif event.is_action_pressed("grab"):
 		
 		if cutting:
@@ -87,9 +95,8 @@ func _input(event: InputEvent):
 		
 		get_tree().call_group("grabbable", "_on_grab_stop")
 	elif event.is_action_pressed("win"):
-		_finish_game(true)
-	elif event.is_action_pressed("lose"):
-		_finish_game(false)
+		_finish_game()
+
 		
 func _draw_cut_line():
 	
@@ -151,7 +158,9 @@ func _init_ingredient_labels():
 
 		emit_signal("item_inserted", i, 0, recipe[i]["amount"])
 
-func _finish_game(game_won):
+func _finish_game():
+	
+	sfx.play_applause_sound()
 	
 	timer.stop_timer()
 	
@@ -226,10 +235,6 @@ func _calculate_cut_stats(items_inserted):
 func _on_game_restart():
 	get_tree().change_scene("res://Game.tscn")
 
-func _on_time_up():
-	print("timer")
-	pass
-
 func _on_item_inserted(stats):
 
 	if input_disabled:
@@ -241,7 +246,7 @@ func _on_item_inserted(stats):
 	emit_signal("item_inserted", stats.type, items_inserted[stats.type]["count"], recipe[stats.type]["amount"])
 	
 	if _is_recipe_complete():
-		_finish_game(true)
+		_finish_game()
 
 func _on_game_start():
 	input_disabled = false
