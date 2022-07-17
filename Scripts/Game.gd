@@ -43,7 +43,7 @@ var recipe = {
 
 var items_inserted = {}
 
-var input_disabled = false
+var input_disabled = true
 
 func _ready():
 	fracture_util.init(base_object)
@@ -51,7 +51,8 @@ func _ready():
 	_init_items_inserted_list()
 	_init_ingredient_labels()
 	
-	timer.start_timer()
+	
+	
 	
 	
 
@@ -241,5 +242,9 @@ func _on_item_inserted(stats):
 	
 	if _is_recipe_complete():
 		_finish_game(true)
+
+func _on_game_start():
+	input_disabled = false
+	timer.start_timer()
 	
 	

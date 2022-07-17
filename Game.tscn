@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Pot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://UI/Font Large.tres" type="DynamicFont" id=12]
 [ext_resource path="res://ResultsScreen.gd" type="Script" id=13]
 [ext_resource path="res://UI/Kenney Future.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Scripts/CountdownTimer.gd" type="Script" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -131,7 +132,6 @@ margin_left = 8.0
 theme = ExtResource( 11 )
 
 [node name="ResultsScreen" type="PopupPanel" parent="UI"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -241,8 +241,52 @@ margin_bottom = 472.0
 size_flags_vertical = 3
 text = "Play Again"
 
+[node name="CountdownTimer" type="PopupPanel" parent="UI"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -52.0
+margin_right = 64.0
+margin_bottom = 52.0
+popup_exclusive = true
+script = ExtResource( 15 )
+
+[node name="Timer" type="Timer" parent="UI/CountdownTimer"]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="Panel" type="Panel" parent="UI/CountdownTimer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+theme = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="UI/CountdownTimer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -48.0
+margin_right = 68.0
+margin_bottom = 48.0
+mouse_filter = 0
+theme = ExtResource( 11 )
+custom_fonts/font = ExtResource( 12 )
+text = "0.00"
+align = 1
+valign = 1
+
 [connection signal="item_inserted" from="Pot" to="." method="_on_item_inserted"]
 [connection signal="button_up" from="UI/ResultsScreen/MainContainer/RestartButton" to="." method="_on_game_restart"]
+[connection signal="timer_done" from="UI/CountdownTimer" to="." method="_on_game_start"]
 
 [editable path="Walls/Node2D5"]
 [editable path="Walls/Node2D6"]
