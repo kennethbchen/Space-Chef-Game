@@ -5,7 +5,7 @@
 
 [node name="BaseObject" type="RigidBody2D" groups=["grabbable"]]
 input_pickable = true
-continuous_cd = 1
+continuous_cd = 2
 linear_damp = 0.1
 angular_damp = 0.1
 script = ExtResource( 2 )

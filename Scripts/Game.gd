@@ -1,5 +1,6 @@
 extends Node2D
 
+export(PackedScene) var base_object
 
 onready var object = $Object
 
@@ -14,7 +15,19 @@ onready var cut_end = Vector2.ZERO
 
 var cutting = false
 
-export(PackedScene) var base_object
+var recipe = {
+	BaseObject.object_type.CARROT: {
+		"amount": 4
+	},
+	BaseObject.object_type.LEEK: {
+		"amount": 6
+	},
+	BaseObject.object_type.POTATO: {
+		"amount": 2
+	}
+}
+
+var items_inserted = {}
 
 func _ready():
 	fracture_util.init(base_object)
@@ -82,5 +95,13 @@ func _cut(start: Vector2, end: Vector2):
 func _on_time_up():
 	print("timer")
 	pass
+
+func _on_item_inserted(stats):
+	
+	if !items_inserted.has(stats.type):
+		items_inserted[stats.type] = {"count": 0, "items": []}
+
+	items_inserted[stats.type]["count"] += 1
+	#items_inserted[stats.type]["items"].append(stats)
 
 

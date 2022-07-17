@@ -4,6 +4,8 @@ class_name BaseObject
 
 enum object_type {CARROT = 0, LEEK = 1, POTATO = 2}
 
+const object_names = {object_type.CARROT: "Carrot", object_type.LEEK: "Leek", object_type.POTATO: "Potato"}
+
 export(object_type) var type
 
 onready var outline = $Outline

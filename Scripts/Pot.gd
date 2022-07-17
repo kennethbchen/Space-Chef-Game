@@ -1,7 +1,6 @@
 extends Node2D
 
-
-signal ingredient_inserted(stats)
+signal item_inserted(stats)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,9 +14,7 @@ func _on_body_entered(body: BaseObject):
 		var stats = Util.get_poly_stats(body.get_polygon())
 		stats["type"] = body.type
 		
-		print(stats)
-		
-		emit_signal("ingredient_inserted", stats)
+		emit_signal("item_inserted", stats)
 		
 		body.queue_free()
 
