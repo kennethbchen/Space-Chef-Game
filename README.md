@@ -9,3 +9,5 @@ Kenney Future Font - https://www.kenney.nl/assets/kenney-fonts
 Knife Sounds 2022 by Erbsland-Music - https://freesound.org/people/Erbsland-Music/sounds/634119/
 
 Applause 2 by unfa - https://freesound.org/people/unfa/sounds/162761/
+
+Countdown Sound by TurtleForGaming - https://opengameart.org/content/countdown-voiceover-robotic
