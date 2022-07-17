@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/321go.wav-d1a1573f0d64d874d5975be9006d2c3d.sample"
+
+[deps]
+
+source_file="res://SFX/321go.wav"
+dest_files=[ "res://.import/321go.wav-d1a1573f0d64d874d5975be9006d2c3d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

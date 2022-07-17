@@ -57,6 +57,7 @@ func _ready():
 	_init_items_inserted_list()
 	_init_ingredient_labels()
 	
+	sfx.play_countdown_sound()
 	
 	
 	

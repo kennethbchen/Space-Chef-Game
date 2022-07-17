@@ -8,6 +8,7 @@ played concurrently
 
 export(Array, Resource) var cutting_sounds = []
 export(Resource) var applause_sound
+export(Resource) var countdown_sound
 
 # Number of audio players
 export var num_channels = 1
@@ -90,3 +91,6 @@ func play_cut_sound():
 	
 func play_applause_sound():
 	play_sound(applause_sound)
+	
+func play_countdown_sound():
+	play_sound(countdown_sound)
