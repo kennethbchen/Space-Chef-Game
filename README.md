@@ -1,3 +1,6 @@
+Game Created in 48 hours for GMTK Game Jam 2022
+
+
 Resources Used
 
 SoloByte's Godot Fracturing Library - https://github.com/SoloByte/godot-polygon2d-fracture
